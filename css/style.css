@@ -1,0 +1,38 @@
+.no-overflow {
+	overflow : hidden;
+}
+.middle {
+	margin : 0 auto;
+	text-align: center;
+}
+.header {
+	font-size : 200%;
+	color : silver;
+}
+
+#body {
+	background-color : #1F1F2E;
+}
+#instructions {
+	font-size : 130%;
+	color : silver;
+	padding : 3%;
+	border : 1px solid blue;
+	width : 50%;
+	margin : 0 auto;
+
+}
+#character-select {
+	text-align : center;
+}
+#char:hover {
+	height : 150px;
+}
+#cs {
+	text-align : center;
+	color : white;
+	font-size : 140%;
+}
+#canvas {
+	margin : 0 auto;
+}
