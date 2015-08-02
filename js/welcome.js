@@ -70,7 +70,7 @@ function addCharacterSelectedText() {
         
 
 function characterSelected() {
-    var charName = this.src.substring(this.src.lastIndexOf("/")+1, this.src.indexOf("."))
+    var charName = this.src.substring(this.src.lastIndexOf("/")+1, this.src.lastIndexOf("."))
     player.setSprite("images/" + charName + ".png");
     document.getElementById("cs").innerHTML = ("You've selected " + charName);
 

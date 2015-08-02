@@ -1,3 +1,5 @@
+
+
 var xDistance = 101;
 var yDistance = 83;
 var height;
@@ -11,9 +13,14 @@ function setScore() {
 function setLives() {
     $("#lives_num").html(lives);
 }
+
+/*
+I made this function because I thought it was much cleaner
+
 function draw(image_file, x, y) {
     ctx.drawImage(Resources.get(image_file), x, y);
 }
+*/
 function getPlayerStartX() {
     var possibleXCoordsForStart = [0, 101, 202, 303, 404];
     return getRandom(possibleXCoordsForStart);
@@ -68,7 +75,7 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     //console.log("rendering at " + this.x + "," + this.y);
-    draw(this.sprite, this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
 // Now write your own player class
@@ -111,7 +118,7 @@ Player.prototype.handleInput = function(direction) {
 }
 
 Player.prototype.render = function() {
-    draw(this.sprite, this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
 Player.prototype.setSprite = function(imageFile) {
@@ -159,8 +166,8 @@ document.addEventListener('keyup', function(e) {
 
 setScore();
 setLives();
-allEnemies = initializeEnemies();
-player = new Player()
+var allEnemies = initializeEnemies();
+var player = new Player();
 player.reset();
 
 //every 15 seconds a new set of enemies is made.
