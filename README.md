@@ -1,6 +1,7 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+To run the application you can git clone this-repo-url or download the zip. Inside this folder you will see
+an index.html file, open up the index.html in your browser of choice and select a character to start the game!
 
-for self-checking their submission.
+Cheers :)
