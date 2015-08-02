@@ -1,3 +1,6 @@
+/* realistically I think that all images used should be loaded in the resources.js file instead of in
+    engine.js. This ensures that are available to you before the game in case you wanted to use them
+*/
 var imageSources = [
     "images/Gem Blue.png", 
     "images/Gem Green.png", 
@@ -20,15 +23,16 @@ var characterImages = [
     "images/char-princess-girl.png"
 ];
 
+//load the necessary images then run the functions
 Resources.load(characterImages);
-
-
-
 
 addImgInterval();
 addCharacterImages();
 addCharacterSelectedText()
 
+/*
+    A cool little interval to show images off to the user in the header of the page
+*/
 function addImgInterval() {
     var img1 = document.getElementById("img1");
     var img2 = document.getElementById("img2");
@@ -37,6 +41,14 @@ function addImgInterval() {
         img2.src = imageSources[Math.floor(Math.random()*imageSources.length)]; 
     }, 700);
 }
+
+/* 
+    grabs the div element to hold the character images, 
+    loops through the character images and adds the character image to the
+    div. Notice that during gameplay, a user can select a different character and it updates.
+    Easy and simple I know, but cool lolzzzz. Using jquery here probably would shorten the code and
+    make it look cleaner, but whatevs I'm a rebel
+*/
 function addCharacterImages() {
 	var characterBox = document.getElementById("character-select");
 	for (var i = 0; i < characterImages.length; i++) {
@@ -48,6 +60,8 @@ function addCharacterImages() {
 	}
 }
 
+/* 
+*/
 function addCharacterSelectedText() {
     var charSelectedDiv = document.createElement("div");
     charSelectedDiv.id="cs";

@@ -24,7 +24,7 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
-        
+
     canvas.id="canvas";
     /* since this page is loaded after app.js
         the variables width and height in app.js need to be
@@ -159,10 +159,9 @@ var Engine = (function(global) {
          */
         allEnemies.forEach(function(enemy) {
             enemy.render();
-            //if (collides(player, enemy))
 
         });
-
+    
         player.render();
     }
 
