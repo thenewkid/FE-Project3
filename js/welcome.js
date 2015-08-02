@@ -20,6 +20,8 @@ var characterImages = [
     "images/char-princess-girl.png"
 ];
 
+Resources.load(characterImages);
+
 
 
 
@@ -58,13 +60,14 @@ function characterSelected() {
     player.setSprite("images/" + charName + ".png");
     document.getElementById("cs").innerHTML = ("You've selected " + charName);
 
-    /*if (document.getElementById("canvas") == null) {
+    if (document.getElementById("canvas") == null) {
         //canvas is not on the page yet so load in engine.js
         //set the overflow of the body to be hidden because the scrolling aspect is garbage
 
         var engineScript = document.createElement("script");
         engineScript.src = "js/engine.js";
         document.body.appendChild(engineScript);
-    }*/
+    
+    }
 
 }

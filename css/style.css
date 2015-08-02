@@ -36,3 +36,20 @@
 #canvas {
 	margin : 0 auto;
 }
+#canvas {
+	margin : 0 auto;
+	text-align : center;
+}
+body {
+	text-align: center;
+}
+#stats {
+	float : left;
+	margin-left: 20%;
+	position:absolute;
+
+}
+#stats p, #stats span {
+	color: white;
+	font-size: 120%;
+}

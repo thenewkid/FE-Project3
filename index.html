@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 </head>
 <body id="body">
@@ -13,23 +14,25 @@
 		<img id="img2" src="images/Gem Orange.png">
 	</div>
 	<br><br><br>
-	<div id="instructions">
-		You start out with 5 lives. Every time you make it to the water you get 10 points and then you are reset. If you get a star you are invincible for 30 seconds. If you get a heart then your lives are increased by one. Keys are worth 20 points, orange gems are worth 30, green gems are worth 40, and blue gems are worth 50 pts, (Because they are the color of my eyes!).
-
-		<p>Select a Character to start the game</p>
-	</div>
 
 
 	<div id="character-select">
 	</div>
 
+	<div id="stats">
+		<p>Score: </p><span id="score_num"></span>
+		<p>Lives: </p><span id="lives_num"></span>
+	</div>
 	<!-- 
 		now that part of the welcome page has loaded we can now load in resources and
 		app.js, and the welcome script
 		we load in engine.js when the user has clicked the start game button
 	-->
 	<script src="js/resources.js"></script>
+	
 	<script src="js/app.js"></script>
+	
 	<script src="js/welcome.js"></script>
+	
 </body>
 </html>

@@ -5,6 +5,12 @@ var width;
 var score = 0;
 var lives = 5;
 
+function setScore() {
+    $("#score_num").html(score);
+}
+function setLives() {
+    $("#lives_num").html(lives);
+}
 function draw(image_file, x, y) {
     ctx.drawImage(Resources.get(image_file), x, y);
 }
@@ -48,6 +54,15 @@ Enemy.prototype.update = function(dt) {
         this.x = 0;
         this.y = getEnemyStartY();
     }
+
+    else if (player.y == this.y) {
+        if (player.x > this.x && player.x < (this.x + 60)) {
+            player.reset();
+            window.scrollTo(0, document.body.scrollHeight);
+            lives--;
+            setLives();
+        }
+    }
 }
 
 // Draw the enemy on the screen, required method for game
@@ -64,15 +79,16 @@ Enemy.prototype.render = function() {
 
 var Player = function() {
     this.sprite ="images/char-boy.png";
-    this.x = getPlayerStartX();
-    this.y = getPlayerStartY();
 }
 //update method takes in the string x or y for coordType
 //and adds distance to it. Sometimes distance will be negative
 Player.prototype.update = function(coordType, distance) {
     this[coordType] += distance;
 }
-
+Player.prototype.reset = function() {
+    this.x = getPlayerStartX();
+    this.y = getPlayerStartY();
+}
 Player.prototype.handleInput = function(direction) {
     if (direction == "left" && this.x != 0) {
         this.update('x', -(xDistance));
@@ -82,6 +98,12 @@ Player.prototype.handleInput = function(direction) {
     }
     else if (direction == "up" && this.y != 41.5) {
         this.update('y', -(yDistance));
+    }
+    else if (direction == "up" && this.y == 41.5) {
+        score += 10;
+        setScore();
+        this.reset();
+        window.scrollTo(0, document.body.scrollHeight)
     }
     else if (direction == "down" && this.y != 373.5) {
         this.update('y', yDistance)
@@ -97,9 +119,9 @@ Player.prototype.setSprite = function(imageFile) {
 }
 
 function getUniqueSpeed(speeds) {
-    var speed = getRandom([2, 2.5, 3, 3.5, 4, 4.5, 5]);
+    var speed = getRandom([2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6]);
     while (speeds.indexOf(speed) > -1)
-        speed = getRandom([2, 2.5, 3, 3.5, 4, 4.5, 5]);
+        speed = getRandom([2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6]);
     return speed;
 }
 
@@ -135,8 +157,11 @@ document.addEventListener('keyup', function(e) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
+setScore();
+setLives();
 allEnemies = initializeEnemies();
-player = new Player
+player = new Player()
+player.reset();
 
 //every 15 seconds a new set of enemies is made.
 /*window.setInterval(function() {
