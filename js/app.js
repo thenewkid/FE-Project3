@@ -14,13 +14,6 @@ function setLives() {
     $("#lives_num").html(lives);
 }
 
-/*
-I made this function because I thought it was much cleaner
-
-function draw(image_file, x, y) {
-    ctx.drawImage(Resources.get(image_file), x, y);
-}
-*/
 function getPlayerStartX() {
     var possibleXCoordsForStart = [0, 101, 202, 303, 404];
     return getRandom(possibleXCoordsForStart);
@@ -45,11 +38,8 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.speed;
-    this.x;
-    this.y;
     this.sprite = 'images/enemy-bug.png';
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -58,7 +48,7 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed + (dt * 0.000000000001);
 
     if (this.x > width) {
-        this.x = 0;
+        this.x = -15;
         this.y = getEnemyStartY();
     }
 
@@ -70,13 +60,13 @@ Enemy.prototype.update = function(dt) {
             setLives();
         }
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    //console.log("rendering at " + this.x + "," + this.y);
+  
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -86,18 +76,18 @@ Enemy.prototype.render = function() {
 
 var Player = function() {
     this.sprite ="images/char-boy.png";
-}
+};
 //update method takes in the string x or y for coordType
 //and adds distance to it. Sometimes distance will be negative
 Player.prototype.update = function(coordType, distance) {
     this[coordType] += distance;
-}
+};
 Player.prototype.reset = function() {
     this.x = getPlayerStartX();
     this.y = getPlayerStartY();
-}
+};
 Player.prototype.handleInput = function(direction) {
-    if (direction == "left" && this.x != 0) {
+    if (direction == "left" && this.x !== 0) {
         this.update('x', -(xDistance));
     }
     else if (direction == "right" && this.x != 404) {
@@ -110,20 +100,20 @@ Player.prototype.handleInput = function(direction) {
         score += 10;
         setScore();
         this.reset();
-        window.scrollTo(0, document.body.scrollHeight)
+        window.scrollTo(0, document.body.scrollHeight);
     }
     else if (direction == "down" && this.y != 373.5) {
-        this.update('y', yDistance)
+        this.update('y', yDistance);
     }
-}
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 Player.prototype.setSprite = function(imageFile) {
     this.sprite = imageFile;
-}
+};
 
 function getUniqueSpeed(speeds) {
     var speed = getRandom([2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6]);
@@ -133,10 +123,10 @@ function getUniqueSpeed(speeds) {
 }
 
 // creates 10 enemies and initializes their x and y coords
-//each enemy will have their own different speed, being between 1 and 10
+//each enemy will have their own different speed
 function initializeEnemies() {
     var enemies = [];
-    var speedsAlready = []
+    var speedsAlready = [];
     for (var i = 0; i < 9; i++) {
         var enemy = new Enemy();
         enemy.x = 0;
@@ -157,7 +147,7 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-    allowedKeys[e.keyCode] != undefined ? player.handleInput(allowedKeys[e.keyCode]) : console.log("Unkown key");
+    allowedKeys[e.keyCode] !== undefined ? player.handleInput(allowedKeys[e.keyCode]) : console.log("Unkown key");
 });
 
 // Now instantiate your objects.
