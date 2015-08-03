@@ -28,7 +28,7 @@ Resources.load(characterImages);
 
 addImgInterval();
 addCharacterImages();
-addCharacterSelectedText()
+addCharacterSelectedText();
 
 /*
     A cool little interval to show images off to the user in the header of the page
@@ -70,11 +70,11 @@ function addCharacterSelectedText() {
         
 
 function characterSelected() {
-    var charName = this.src.substring(this.src.lastIndexOf("/")+1, this.src.lastIndexOf("."))
+    var charName = this.src.substring(this.src.lastIndexOf("/")+1, this.src.lastIndexOf("."));
     player.setSprite("images/" + charName + ".png");
     document.getElementById("cs").innerHTML = ("You've selected " + charName);
 
-    if (document.getElementById("canvas") == null) {
+    if (document.getElementById("canvas") === null) {
         //canvas is not on the page yet so load in engine.js
         //set the overflow of the body to be hidden because the scrolling aspect is garbage
 
